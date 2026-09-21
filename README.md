@@ -7,8 +7,14 @@ files and push.
 
 ## Files
 
-- `style.css` — site-wide custom styles
-- `script.js` — site-wide custom scripts
+- `style.css` — site-wide custom styles: brand colors/fonts (as CSS
+  variables) plus the `.eo-*` classes and `.book-lesson-btn` used by the
+  page sections below
+- `script.js` — site-wide custom scripts (empty for now)
+- `assets/logo.png` — the 805 Outdoors logo, served via jsDelivr for use
+  in `<img>` tags (see Section snippets below)
+- `sections/` — reference copies of the HTML you paste into Squarespace
+  Code Blocks; not served by jsDelivr, just kept here for version control
 
 ## 1. Push this repo to GitHub
 
@@ -68,9 +74,52 @@ vary slightly by plan/version).
 
 Save. Squarespace injects these on every page site-wide.
 
+## 4. Add the page sections
+
+`sections/` has one HTML file per homepage section:
+
+1. `hero.html`
+2. `about.html`
+3. `history.html`
+4. `services.html`
+5. `partners.html`
+
+On the Squarespace page, add a **Code Block** for each one, in that order,
+and paste its contents in. They rely entirely on the classes and variables
+already defined in `style.css`, so nothing else needs to be pasted in
+per-block. Squarespace's own site header/footer and navigation stay as-is —
+these sections are just the page content in between.
+
+Each file has `[bracketed placeholders]` for copy that only you can write
+(bio, milestones, real certification names, partner details, etc.) — swap
+those out directly in the Code Block. To add another activity or partner,
+duplicate the relevant card `<div>` (marked with an HTML comment) inside its
+grid.
+
+## Retheming later
+
+Every color and font lives once, at the top of `style.css`, in `:root`:
+
+```css
+:root {
+  --eo-navy: #1b2a3b;
+  --eo-accent: #d98b3b;
+  --eo-forest: #4b6b4a;
+  --eo-cta: #1a7a3c;
+  /* …etc */
+}
+```
+
+Change a value there, push, purge/bump the cache (below), and it updates
+everywhere on the site at once — headings, buttons, badges, backgrounds.
+There's no need to touch the section HTML files for a color or font change.
+
 ## Workflow going forward
 
-1. Edit `style.css` / `script.js` locally.
+1. Edit `style.css` / `script.js` / a file in `sections/` locally.
 2. Commit and push to GitHub.
 3. If using a branch URL, purge the jsDelivr cache (see above) so changes
-   go live immediately; if using a version tag, bump the tag.
+   go live immediately; if using a version tag, bump the tag. Section HTML
+   pasted directly into Squarespace Code Blocks updates instantly since it
+   isn't loaded from jsDelivr — only `style.css`/`script.js`/`logo.png`
+   changes need a cache purge.
