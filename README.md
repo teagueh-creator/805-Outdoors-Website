@@ -12,20 +12,12 @@ files and push.
 
 ## 1. Push this repo to GitHub
 
-If this folder isn't a git repo yet:
-
-```bash
-git init
-git add style.css script.js README.md
-git commit -m "Initial custom code files"
-```
-
-Create a new repository on GitHub (public — jsDelivr needs a public repo),
+This folder is already a git repo with an initial commit and its remote set
+to `https://github.com/teaguehamilton/805-outdoors-Website.git`. Make sure
+that repository exists on GitHub (public — jsDelivr needs a public repo),
 then push:
 
 ```bash
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-git branch -M main
 git push -u origin main
 ```
 
@@ -34,14 +26,14 @@ git push -u origin main
 jsDelivr serves any file straight from a public GitHub repo. URL format:
 
 ```
-https://cdn.jsdelivr.net/gh/<username>/<repo-name>@<branch-or-tag>/<file>
+https://cdn.jsdelivr.net/gh/teaguehamilton/805-outdoors-Website@<branch-or-tag>/<file>
 ```
 
 For example, pointing at the `main` branch:
 
 ```
-https://cdn.jsdelivr.net/gh/<your-username>/<repo-name>@main/style.css
-https://cdn.jsdelivr.net/gh/<your-username>/<repo-name>@main/script.js
+https://cdn.jsdelivr.net/gh/teaguehamilton/805-outdoors-Website@main/style.css
+https://cdn.jsdelivr.net/gh/teaguehamilton/805-outdoors-Website@main/script.js
 ```
 
 **Important — caching:** jsDelivr aggressively caches files pulled from a
@@ -50,7 +42,7 @@ show up on the live site right away. Two ways to deal with this:
 
 - **For active development:** use the branch URL (`@main`) and purge the
   cache after each push by visiting:
-  `https://purge.jsdelivr.net/gh/<your-username>/<repo-name>@main/style.css`
+  `https://purge.jsdelivr.net/gh/teaguehamilton/805-outdoors-Website@main/style.css`
   (and the same for `script.js`).
 - **For production/stability:** tag a release (e.g. `git tag v1.0.0 && git
   push origin v1.0.0`) and use the tag in the URL instead of `@main`. Tagged
@@ -65,13 +57,13 @@ vary slightly by plan/version).
 **Header** — add the CSS:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/<your-username>/<repo-name>@main/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/teaguehamilton/805-outdoors-Website@main/style.css">
 ```
 
 **Footer** — add the JS:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/<your-username>/<repo-name>@main/script.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/teaguehamilton/805-outdoors-Website@main/script.js"></script>
 ```
 
 Save. Squarespace injects these on every page site-wide.
